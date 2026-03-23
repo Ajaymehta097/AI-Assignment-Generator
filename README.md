@@ -1,6 +1,6 @@
 # 🎓 AssignmentAI – AI Assignment Generator
 
-Upload a Word file (.docx) with assignment questions and get a **complete, formatted assignment** written by the Hugging Face **Mixtral-8x7B** AI model — with your **name and enrollment number** in the document header.
+Upload a Word file (.docx) with assignment questions and get a **complete, formatted assignment**  AI model — with your **name and enrollment number** in the document header.
 
 ---
 
