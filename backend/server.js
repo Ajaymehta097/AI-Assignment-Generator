@@ -10,7 +10,7 @@ const app  = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: "*",  // sab allow karo
+  origin: process.env.REACT_APP_API_URL || "*",
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
 initDB()
   .then(() => {
     app.listen(PORT, "0.0.0.0", () => {
-      console.log(`\n🚀 Server running at http://localhost:${PORT}`);
+      console.log(`🚀 Server running on port ${PORT}`);
       if (!process.env.HF_API_TOKEN) console.warn("⚠️  HF_API_TOKEN not set!");
       else console.log("✅ HF_API_TOKEN loaded");
     });
