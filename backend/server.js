@@ -8,11 +8,25 @@ const authRoutes       = require("./routes/auth");
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
+// Add your live Vercel URL to this list
+const allowedOrigins = [
+  'http://localhost:3000', 
+  'https://ai-assignment-generator-iota.vercel.app' 
+];
 
 app.use(cors({
-  origin: 'http://localhost:3000' || "https://ai-assignment-generator-iota.vercel.app", // Allow your React frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Standard allowed methods
-  credentials: true // Optional: Only if you are sending cookies or session tokens
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) === -1) {
+      var msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
