@@ -10,9 +10,9 @@ const app  = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: process.env.REACT_APP_API_URL || "*",
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  origin: 'http://localhost:3000', // Allow your React frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Standard allowed methods
+  credentials: true // Optional: Only if you are sending cookies or session tokens
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
