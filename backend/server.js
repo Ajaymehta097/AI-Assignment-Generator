@@ -10,7 +10,7 @@ const app  = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow your React frontend
+  origin: 'http://localhost:3000' || "https://ai-assignment-generator-iota.vercel.app", // Allow your React frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Standard allowed methods
   credentials: true // Optional: Only if you are sending cookies or session tokens
 }));
